@@ -1,65 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Memories</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Our Memories 💕</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffe6f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    p.subtitle {
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .menu {
+      margin-bottom: 20px;
+    }
+
+    .menu button {
+      margin: 10px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .menu button:hover {
+      background: #ff99cc;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .section {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 15px;
+      width: 85%;
+      max-width: 450px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>🌸 Our Memories</h1>
-    <p>Tempat kecil untuk menyimpan cerita kita 💕</p>
-    <nav>
-      <button class="tab-btn active" data-tab="gallery">📷 Gallery</button>
-      <button class="tab-btn" data-tab="stories">📖 Stories</button>
-      <button class="tab-btn" data-tab="notes">💌 Notes</button>
-    </nav>
-  </header>
+  <div class="container">
+    <h1>Our Memories 💕</h1>
+    <p class="subtitle">Tempat kecil untuk menyimpan cerita kita ✨</p>
 
-  <main>
-    <!-- Gallery -->
-    <section id="gallery" class="tab-content active">
-      <h2>📷 Gallery</h2>
-      <div class="gallery">
-        <img src="assets/photo1.jpg" alt="memory">
-        <img src="assets/photo2.jpg" alt="memory">
-        <video controls src="assets/video1.mp4"></video>
-      </div>
-    </section>
+    <!-- Menu Navigasi -->
+    <div class="menu">
+      <button onclick="showSection('gallery')">📸 Gallery</button>
+      <button onclick="showSection('stories')">📖 Stories</button>
+      <button onclick="showSection('notes')">💌 Notes</button>
+    </div>
 
-    <!-- Stories -->
-    <section id="stories" class="tab-content">
+    <!-- Section Gallery -->
+    <div id="gallery" class="section">
+      <h2>📸 Gallery</h2>
+      <div class="card">Foto memory 1</div>
+      <div class="card">Foto memory 2</div>
+    </div>
+
+    <!-- Section Stories -->
+    <div id="stories" class="section">
       <h2>📖 Stories</h2>
-      <article>
-        <h3>First Day Together</h3>
-        <p>Hari itu kita ketemu pertama kali... dan aku tahu ini akan jadi awal dari banyak hal indah. 💕</p>
-      </article>
-      <article>
-        <h3>Little Adventure</h3>
-        <p>Walaupun cuma jalan sederhana, setiap langkah bareng kamu terasa penuh makna.</p>
-      </article>
-    </section>
+      <div class="card">Cerita pertama 💕</div>
+      <div class="card">Cerita kedua ✨</div>
+    </div>
 
-    <!-- Notes -->
-    <section id="notes" class="tab-content">
-      <h2>💌 Little Notes</h2>
-      <ul>
-        <li>Aku bahagia bisa punya kamu ✨</li>
-        <li>Jangan lupa istirahat cukup ya 😴</li>
-        <li>Aku selalu ada buat kamu ❤️</li>
-      </ul>
-    </section>
-  </main>
+    <!-- Section Notes -->
+    <div id="notes" class="section">
+      <h2>💌 Notes</h2>
+      <div class="card">Pesan manis untukmu 😘</div>
+    </div>
 
-  <footer>
-    <p>© 2025 Memories</p>
-  </footer>
+    <footer>© 2025 Memories</footer>
+  </div>
 
-  <!-- 🎶 Musik Latar -->
-  <audio id="bgMusic" src="assets/music.mp3" autoplay loop></audio>
-  <button id="musicControl">⏸ Pause Music</button>
-
-  <script src="script.js"></script>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
