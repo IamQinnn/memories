@@ -6,13 +6,16 @@ if (pinForm) {
   pinForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const pin = document.getElementById("pin").value;
+    const errorMsg = document.getElementById("error");
+
     if (pin === SECRET_PIN) {
       window.location.href = "memories.html";
     } else {
-      document.getElementById("error").style.display = "block";
+      errorMsg.style.display = "block"; // hanya muncul kalau salah
     }
   });
 }
+
 
 // ===== NAVIGASI TAB =====
 const tabs = document.querySelectorAll(".tab-btn");
