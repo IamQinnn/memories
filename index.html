@@ -1,22 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memories ✨📸</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Memories About Us😍</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffe6f0; /* pink soft */
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .login-container {
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+      border: 3px dashed #ff99cc;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ff3399;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #cc0066;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #ff99cc;
+      width: 80%;
+      outline: none;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    input[type="password"]:focus {
+      border-color: #ff3399;
+      background-color: #fff;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff66b2, #ff99cc);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #ff3399, #ff66b2);
+    }
+  </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>Memories About Us😍</h2>
-    <form id="pinForm">
-  <label for="pin">Masukkan PIN Sayang🥰</label>
-  <input type="password" id="pin" required>
-  <button type="submit">Login</button>
-  <p id="error" style="color: red; display: none;">PIN salah, Kamu Siapa??🤨</p>
-</form>
+  <div class="login-container">
+    <h1>Memories About Us 💖</h1>
+    <label for="pin">Masukkan PIN Sayang 🥰</label>
+    <input type="password" id="pin" placeholder="****">
+    <br>
+    <button>Login</button>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
