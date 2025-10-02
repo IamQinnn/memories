@@ -1,21 +1,14 @@
 // ===== LOGIN PAGE (PIN) =====
-const SECRET_PIN = "02102022";
+ function checkPin() {
+      const pinBenar = "02102022";
+      const pinInput = document.getElementById("pin").value;
 
-const pinForm = document.getElementById("pinForm");
-if (pinForm) {
-  pinForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const pin = document.getElementById("pin").value;
-    const errorMsg = document.getElementById("error");
-
-    if (pin === SECRET_PIN) {
-      window.location.href = "memories.html";
-    } else {
-      errorMsg.style.display = "block"; // hanya muncul kalau salah
+      if (pinInput === pinBenar) {
+        window.location.href = "memories.html";
+      } else {
+        alert("Pin Salah Sayang😒 coba lagi yaaa");
+      }
     }
-  });
-}
-
 
 // ===== NAVIGASI TAB =====
 const tabs = document.querySelectorAll(".tab-btn");
