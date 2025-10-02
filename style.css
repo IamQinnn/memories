@@ -1,117 +1,68 @@
 /* Umum */
 body {
+  margin: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  background: #fff0f6;
-  margin: 0;
-  padding: 0;
+  background-color: #ffe6f0;
+  color: #333;
   text-align: center;
-  transition: background 0.3s ease;
 }
 
-header {
-  background: linear-gradient(135deg, #ff85a2, #ffb3c6);
-  color: white;
-  padding: 20px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+/* Login Page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-h1 {
-  margin: 0;
-}
-
-nav {
-  margin-top: 15px;
-}
-
-.tab-btn {
-  background: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
+.login-container {
+  background: #fff0f5;
+  padding: 30px;
   border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.login-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.login-container input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid pink;
+  border-radius: 10px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  background: #ff99cc;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
 
-.tab-btn:hover {
-  background: #ffe0eb;
-  transform: scale(1.05);
-}
-
-.tab-btn.active {
-  background: #ff85a2;
-  color: white;
-}
-
-/* Konten tab */
-.tab-content {
-  display: none;
-  padding: 20px;
-  animation: fadeIn 0.5s ease;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Gallery grid */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.gallery img, .gallery video {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-.gallery img:hover, .gallery video:hover {
-  transform: scale(1.05);
-}
-
-/* Stories */
-article {
-  background: #fff;
+/* Navbar */
+.navbar {
+  background: #ffb6c1;
   padding: 15px;
-  border-radius: 15px;
-  margin: 15px auto;
-  max-width: 600px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 0 0 20px 20px;
 }
 
-/* Notes */
-ul {
-  list-style: none;
-  padding: 0;
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  background: #ff69b4;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
-ul li {
-  background: #fff;
-  margin: 10px auto;
-  max-width: 400px;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  font-size: 16px;
-}
-
-/* Footer */
-footer {
-  margin-top: 40px;
-  padding: 15px;
-  font-size: 14px;
-  color: #666;
-}
-
-/* Animasi */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.navbar a:hover {
+  background: #ff1493;
 }
