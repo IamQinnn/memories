@@ -111,15 +111,15 @@ body {
   margin-bottom: 10px;
 }
 
-/* Animasi love yang jatuh */
-.heart {
+/* Animasi objek jatuh (love, bunga, bintang) */
+.falling {
   position: fixed;
   top: -10px;
   font-size: 20px;
-  color: #ff3399;
-  animation: fall 5s linear infinite;
+  animation: fall 6s linear infinite;
   pointer-events: none;
   opacity: 0.8;
+  z-index: 9999;
 }
 
 @keyframes fall {
