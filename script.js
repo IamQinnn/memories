@@ -46,7 +46,9 @@ if (music && musicControl) {
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
-  heart.textContent = "💖,💞,🤍";
+  heart.textContent = "💖";
+  heart.textContent = "💞";
+  heart.textContent = "🤍";
 
   // posisi horizontal acak
   heart.style.left = Math.random() * window.innerWidth + "px";
