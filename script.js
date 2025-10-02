@@ -42,31 +42,31 @@ if (music && musicControl) {
   });
 }
 
-// Membuat love jatuh-jatuh
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.textContent = "💖";
-  heart.textContent = "💞";
-  heart.textContent = "🤍";
+// Array simbol lucu
+const symbols = ["💖", "💕", "😜", "🌸", "😝", "✨", "💩", "💫"];
+
+function createFallingEmoji() {
+  const emoji = document.createElement("div");
+  emoji.classList.add("falling");
+  emoji.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
   // posisi horizontal acak
-  heart.style.left = Math.random() * window.innerWidth + "px";
+  emoji.style.left = Math.random() * window.innerWidth + "px";
 
   // ukuran acak
-  const size = Math.random() * 20 + 15; 
-  heart.style.fontSize = size + "px";
+  const size = Math.random() * 25 + 15; 
+  emoji.style.fontSize = size + "px";
 
   // durasi jatuh acak
-  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  emoji.style.animationDuration = (Math.random() * 3 + 3) + "s";
 
-  document.body.appendChild(heart);
+  document.body.appendChild(emoji);
 
   // hapus setelah selesai
   setTimeout(() => {
-    heart.remove();
-  }, 6000);
+    emoji.remove();
+  }, 7000);
 }
 
-// interval untuk memunculkan hati
-setInterval(createHeart, 500);
+// interval untuk memunculkan emoji
+setInterval(createFallingEmoji, 400);
