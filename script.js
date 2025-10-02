@@ -39,12 +39,6 @@ loginBtn.onclick = () => {
   });
 };
 
-// Demo Mode (tanpa login Firebase)
-demoBtn.onclick = () => {
-  authModal.style.display = "none";
-  mainContent.classList.remove("hidden");
-};
-
 // Logout
 logoutBtn.onclick = () => auth.signOut();
 
