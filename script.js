@@ -25,3 +25,19 @@ tabs.forEach(tab => {
     document.getElementById(tab.dataset.tab).classList.add("active");
   });
 });
+
+// ===== MUSIK LATAR =====
+const music = document.getElementById("bgMusic");
+const musicControl = document.getElementById("musicControl");
+
+if (music && musicControl) {
+  musicControl.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      musicControl.textContent = "⏸ Pause Music";
+    } else {
+      music.pause();
+      musicControl.textContent = "▶️ Play Music";
+    }
+  });
+}
