@@ -1,27 +1,65 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memories Kita 💕</title>
+  <title>Our Memories</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigasi Lucu -->
-  <nav class="navbar">
-    <a href="#">📸 Foto</a>
-    <a href="#">🎥 Video</a>
-    <a href="#">💌 Cerita</a>
-  </nav>
+  <header>
+    <h1>🌸 Our Memories</h1>
+    <p>Tempat kecil untuk menyimpan cerita kita 💕</p>
+    <nav>
+      <button class="tab-btn active" data-tab="gallery">📷 Gallery</button>
+      <button class="tab-btn" data-tab="stories">📖 Stories</button>
+      <button class="tab-btn" data-tab="notes">💌 Notes</button>
+    </nav>
+  </header>
 
-  <div class="content">
-    <h2>Welcome Sayangku 💖</h2>
-    <p>Di sini kita bisa nyimpan semua kenangan kita ✨</p>
-  </div>
+  <main>
+    <!-- Gallery -->
+    <section id="gallery" class="tab-content active">
+      <h2>📷 Gallery</h2>
+      <div class="gallery">
+        <img src="assets/photo1.jpg" alt="memory">
+        <img src="assets/photo2.jpg" alt="memory">
+        <video controls src="assets/video1.mp4"></video>
+      </div>
+    </section>
 
-  <!-- Musik Latar -->
-  <audio autoplay loop hidden>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    <!-- Stories -->
+    <section id="stories" class="tab-content">
+      <h2>📖 Stories</h2>
+      <article>
+        <h3>First Day Together</h3>
+        <p>Hari itu kita ketemu pertama kali... dan aku tahu ini akan jadi awal dari banyak hal indah. 💕</p>
+      </article>
+      <article>
+        <h3>Little Adventure</h3>
+        <p>Walaupun cuma jalan sederhana, setiap langkah bareng kamu terasa penuh makna.</p>
+      </article>
+    </section>
+
+    <!-- Notes -->
+    <section id="notes" class="tab-content">
+      <h2>💌 Little Notes</h2>
+      <ul>
+        <li>Aku bahagia bisa punya kamu ✨</li>
+        <li>Jangan lupa istirahat cukup ya 😴</li>
+        <li>Aku selalu ada buat kamu ❤️</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Memories</p>
+  </footer>
+
+  <!-- 🎶 Musik Latar -->
+  <audio id="bgMusic" src="assets/music.mp3" autoplay loop></audio>
+  <button id="musicControl">⏸ Pause Music</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
