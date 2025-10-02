@@ -1,6 +1,6 @@
 // ===== LOGIN PAGE (PIN) =====
  function checkPin() {
-  const pinBenar = "1234"; // ubah PIN sesuai keinginanmu
+  const pinBenar = "02102022"; // ubah PIN sesuai keinginanmu
   const pinInput = document.getElementById("pin").value;
 
   if (pinInput === pinBenar) {
