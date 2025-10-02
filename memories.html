@@ -102,6 +102,26 @@
     0% { left: -150px; }
     100% { left: 110%; }
   }
+    #cat {
+  position: absolute;
+  bottom: 50px;
+  height: 120px;
+  display: none;
+  z-index: 1000;
+}
+
+.love {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp 2s ease-out;
+  z-index: 1001;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100px); opacity: 0; }
+}
+
 
   /* Love jatuh */
   .love {
@@ -151,7 +171,7 @@
   </div>
 
   <!-- Gambar Kucing -->
-<img id="cat" class="cat" src="https://tenor.com/sfhBRkLTjdh.gif" style="display:none;" alt="cat">
+  <img id="cat" src="https://media.tenor.com/M4q1kxy0ezoAAAAi/cat-love.gif" alt="cat">
   
   <!-- Footer -->
   <footer>© 2025 Memories</footer>
@@ -177,37 +197,39 @@
       sound.currentTime = 0;
       sound.play();
     }
-    function spawnCat() {
-    const cat = document.getElementById("cat");
-    cat.style.display = "block";
-    cat.style.animation = "none"; 
-    void cat.offsetWidth; // reset animasi
-    cat.style.animation = "walk 8s linear forwards";
+       function showCat() {
+      const cat = document.getElementById("cat");
+      cat.style.display = "block";
+      cat.style.left = "-200px";
 
-    // spawn love selama kucing lewat
-    let loveInterval = setInterval(() => {
-      let love = document.createElement("div");
-      love.className = "love";
-      love.innerHTML = "💖";
-      love.style.left = (cat.offsetLeft + 50) + "px";
-      love.style.top = "100px";
-      document.body.appendChild(love);
+      let pos = -200;
+      const interval = setInterval(() => {
+        pos += 3;
+        cat.style.left = pos + "px";
 
-      // animasi love
-      love.style.left = (cat.offsetLeft + Math.random() * 60) + "px";
-      love.style.top = "100px";
+        // tiap 100px kucing ngeluarin love
+        if (pos % 100 === 0) {
+          const love = document.createElement("div");
+          love.innerHTML = "💖";
+          love.className = "love";
+          love.style.left = pos + "px";
+          love.style.top = "50%";
+          document.body.appendChild(love);
 
-      setTimeout(() => love.remove(), 3000);
-    }, 800);
+          // hapus setelah 2 detik
+          setTimeout(() => love.remove(), 2000);
+        }
 
-    setTimeout(() => {
-      clearInterval(loveInterval);
-      cat.style.display = "none";
-    }, 8500);
-  }
+        // kalau sudah lewat layar, reset
+        if (pos > window.innerWidth) {
+          clearInterval(interval);
+          cat.style.display = "none";
+        }
+      }, 30);
+    }
 
-  // Muncul setiap 10 detik
-  setInterval(spawnCat, 10000);
+    // kucing muncul tiap 15 detik
+    setInterval(showCat, 15000);
   </script>
 </body>
 </html>
