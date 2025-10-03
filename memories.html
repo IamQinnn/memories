@@ -12,6 +12,7 @@
       background-image: radial-gradient(#fff 1px, transparent 1px);
       background-size: 20px 20px;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     h1 {
@@ -21,7 +22,7 @@
       font-size: 28px;
     }
 
-    /* Container Lingkaran */
+    /* Menu Lingkaran */
     .circle-menu {
       display: flex;
       justify-content: center;
@@ -33,7 +34,6 @@
       max-width: 400px;
     }
 
-    /* Item Lingkaran */
     .circle {
       width: 120px;
       height: 120px;
@@ -72,6 +72,7 @@
       text-align: center;
       margin-top: 20px;
       padding: 20px;
+      min-height: 50vh;
     }
 
     .content h2 {
@@ -80,12 +81,64 @@
       margin-bottom: 10px;
     }
 
-    .content p {
-      font-size: 16px;
-      color: #444;
+    /* Grid Card Style */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #ff99c8 #fff0f6;
     }
 
-    /* Animasi Lucu */
+    .card-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .card-container::-webkit-scrollbar-thumb {
+      background: #ff99c8;
+      border-radius: 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #fff0f6;
+    }
+
+    .card img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      color: #e75480;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* Emoji Floating */
     .emoji-floating {
       position: absolute;
       font-size: 24px;
@@ -96,6 +149,35 @@
       0% { transform: translateY(0) scale(1);}
       50% { transform: translateY(-20px) scale(1.2);}
       100% { transform: translateY(0) scale(1);}
+    }
+
+    /* Footer */
+    footer {
+      background: #ffb6c1;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer p {
+      margin: 5px;
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    footer .footer-icons {
+      font-size: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-5px);}
     }
   </style>
 </head>
@@ -129,24 +211,94 @@
     <p>Pilih salah satu lingkaran di atas untuk melihat kenangan kita 💕</p>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-icons">💖✨🌸💕🎀</div>
+    <p>Made with Love 💕</p>
+    <p>For Our Sweet Memories ✨</p>
+  </footer>
+
   <script>
     function showContent(type) {
       const content = document.getElementById("content");
       let html = "";
 
       if (type === "gallery") {
-        html = `<h2>📸 Gallery</h2><p>Tempat menyimpan foto-foto kenangan kita ✨💕</p>`;
+        html = `
+          <h2>📸 Gallery</h2>
+          <div class="card-container">
+            <div class="card">
+              <img src="https://placekitten.com/200/200" alt="">
+              <h3>Foto 1</h3>
+              <p>Kenangan kita di pantai 🌊</p>
+            </div>
+            <div class="card">
+              <img src="https://placekitten.com/201/200" alt="">
+              <h3>Foto 2</h3>
+              <p>Jalan-jalan sore bareng 🌆</p>
+            </div>
+            <div class="card">
+              <img src="https://placekitten.com/202/200" alt="">
+              <h3>Foto 3</h3>
+              <p>Ketawa bareng sampai lupa waktu 😂</p>
+            </div>
+          </div>
+        `;
       } else if (type === "stories") {
-        html = `<h2>📖 Stories</h2><p>Kumpulan cerita indah tentang perjalanan kita 🕊️</p>`;
+        html = `
+          <h2>📖 Stories</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Cerita Pertama</h3>
+              <p>Hari pertama kita ketemu 💕</p>
+            </div>
+            <div class="card">
+              <h3>Cerita Kedua</h3>
+              <p>Waktu kita makan bareng 🍜</p>
+            </div>
+            <div class="card">
+              <h3>Cerita Ketiga</h3>
+              <p>Jalan bareng malem-malem 🌙</p>
+            </div>
+          </div>
+        `;
       } else if (type === "notes") {
-        html = `<h2>📝 Notes</h2><p>Catatan kecil penuh cinta 💌</p>`;
+        html = `
+          <h2>📝 Notes</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Catatan 1</h3>
+              <p>Aku sayang kamu 💌</p>
+            </div>
+            <div class="card">
+              <h3>Catatan 2</h3>
+              <p>Jangan lupa jaga kesehatan ya 🌸</p>
+            </div>
+            <div class="card">
+              <h3>Catatan 3</h3>
+              <p>Semangat selalu, aku selalu dukung kamu ✨</p>
+            </div>
+          </div>
+        `;
       } else if (type === "extra") {
-        html = `<h2>🎁 Extra</h2><p>Hal-hal spesial yang cuma kita yang tahu 💝</p>`;
+        html = `
+          <h2>🎁 Extra</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Surprise</h3>
+              <p>Ini hadiah rahasia buat kamu 🎀</p>
+            </div>
+            <div class="card">
+              <h3>Quotes</h3>
+              <p>"Cinta adalah perjalanan, bukan tujuan" 💖</p>
+            </div>
+          </div>
+        `;
       }
 
       content.innerHTML = html;
 
-      // Tambah emoji lucu yang melayang
+      // Emoji lucu melayang
       let emoji = document.createElement("div");
       emoji.className = "emoji-floating";
       emoji.style.left = Math.random() * 90 + "vw";
