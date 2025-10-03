@@ -84,6 +84,22 @@
       font-size: 16px;
       color: #444;
     }
+    
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 15px;
+      width: 85%;
+      max-width: 450px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .section {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
 
     /* Animasi Lucu */
     .emoji-floating {
@@ -97,24 +113,39 @@
       50% { transform: translateY(-20px) scale(1.2);}
       100% { transform: translateY(0) scale(1);}
     }
+
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 1em;
+      padding: 15px;
+      background: transparent;
+    }
+    
   </style>
 </head>
 <body>
 
   <h1>💖 Our Memories 💖</h1>
 
-  <!-- Menu Lingkaran -->
-  <div class="circle-menu">
-    <div class="circle" onclick="showContent('gallery')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1042/1042339.png" alt="">
+      <!-- Section Gallery -->
+    <div id="gallery" class="section">
+      <h2>📸 Gallery</h2>
+      <div class="card">Foto memory 1</div>
+      <div class="card">Foto memory 2</div>
       <span>Gallery</span>
     </div>
-    <div class="circle" onclick="showContent('stories')">
-      <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="">
+    <!-- Section Stories -->
+    <div id="stories" class="section">
+      <h2>📖 Stories</h2>
+      <div class="card">Cerita pertama 💕</div>
+      <div class="card">Cerita kedua ✨</div>
       <span>Stories</span>
     </div>
-    <div class="circle" onclick="showContent('notes')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+    <!-- Section Notes -->
+    <div id="notes" class="section">
+      <h2>💌 Notes</h2>
+      <div class="card">Pesan manis untukmu 😘</div>
       <span>Notes</span>
     </div>
     <div class="circle" onclick="showContent('extra')">
@@ -126,8 +157,18 @@
   <!-- Konten Dinamis -->
   <div class="content" id="content">
     <h2>✨ Welcome ✨</h2>
-    <p>Pilih salah satu lingkaran di atas untuk melihat kenangan kita 💕</p>
+    <p>Tempat kecil untuk menyimpan cerita kita ✨</p>
   </div>
+  <footer>© 2025 Memories</footer>
+  <!-- Musik Latar Autoplay -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Suara klik tombol -->
+  <audio id="clickSound">
+    <source src="https://www.myinstants.com/media/sounds/cartoon-pop.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     function showContent(type) {
@@ -154,6 +195,12 @@
       document.body.appendChild(emoji);
 
       setTimeout(()=> emoji.remove(),4000);
+    }
+
+    function playClick() {
+      const sound = document.getElementById("clickSound");
+      sound.currentTime = 0;
+      sound.play();
     }
   </script>
 
