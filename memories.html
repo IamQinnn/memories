@@ -3,137 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Memories 💕</title>
+  <title>Our Memories</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #ffe4ec;
+      font-family: "Poppins", sans-serif;
+      background-color: #ffd6e8;
       text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
-    /* === NAVBAR CIRCLE === */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      background: #fff0f5;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
+    h2 {
+      margin-top: 20px;
+      color: #ff4d88;
+      font-size: 28px;
     }
 
-    .circle-nav {
-      width: 90px;
-      height: 90px;
+    /* lingkaran menu */
+    .circle-menu {
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       overflow: hidden;
-      display: flex;
-      flex-wrap: wrap;
-      border: 3px solid pink;
-      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      transition: transform 1s ease-in-out;
     }
 
-    .circle-nav div {
-      width: 50%;
-      height: 50%;
+    .circle-menu.rotate {
+      transform: rotate(360deg);
+    }
+
+    .circle-menu div {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
       color: white;
-      text-shadow: 1px 1px 2px black;
+      padding: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
-    .gallery { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
-    .stories { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-    .notes { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
-    .extra { background: linear-gradient(135deg, #f6d365, #fda085); }
-
-    .circle-nav div:hover {
-      opacity: 0.8;
-      transform: scale(1.05);
-      transition: 0.3s;
+    .circle-menu div span {
+      font-size: 26px;
+      margin-bottom: 5px;
     }
 
-    .navbar h1 {
-      margin-left: 15px;
-      font-size: 22px;
-      color: #ff4d6d;
-    }
+    .gallery { background: #ff7f7f; }
+    .stories { background: #ffb84d; }
+    .notes { background: #85e085; }
+    .extra { background: #809fff; }
 
-    /* === CONTENT === */
-    .container {
-      padding: 30px;
-    }
-    .section {
+    /* konten */
+    .content {
       display: none;
-      animation: fadeIn 0.7s;
+      padding: 20px;
+      animation: fadeIn 0.8s ease;
     }
-    .section.active {
+
+    .content.active {
       display: block;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    h2 {
-      font-size: 26px;
-      color: #ff4d6d;
-    }
-    p {
-      font-size: 18px;
-      color: #444;
-    }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="circle-nav">
-      <div class="gallery" onclick="showSection('gallery')">📸<br>Gallery</div>
-      <div class="stories" onclick="showSection('stories')">📖<br>Stories</div>
-      <div class="notes" onclick="showSection('notes')">💌<br>Notes</div>
-      <div class="extra" onclick="showSection('extra')">🎁<br>Extra</div>
+
+  <h2>💕 Our Memories 💕</h2>
+
+  <div class="circle-menu" id="menu">
+    <div class="gallery" data-target="gallery">
+      <span>📸</span>
+      Gallery
     </div>
-    <h1>Our Memories 💕</h1>
+    <div class="stories" data-target="stories">
+      <span>📖</span>
+      Stories
+    </div>
+    <div class="notes" data-target="notes">
+      <span>💌</span>
+      Notes
+    </div>
+    <div class="extra" data-target="extra">
+      <span>🎁</span>
+      Extra
+    </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
-    <div id="gallery" class="section active">
-      <h2>📸 Gallery</h2>
-      <p>Tempat untuk menyimpan foto-foto kenangan kita 💖</p>
-      <img src="https://placekitten.com/200/200" alt="foto lucu">
-    </div>
+  <!-- Konten -->
+  <div id="gallery" class="content">
+    <h3>📸 Gallery</h3>
+    <p>Tempat untuk menyimpan foto-foto kenangan kita 💖</p>
+  </div>
 
-    <div id="stories" class="section">
-      <h2>📖 Stories</h2>
-      <p>Cerita manis yang tidak akan terlupakan ✨</p>
-      <p>"Hari itu kita jalan-jalan bareng ke pantai... 🌊"</p>
-    </div>
+  <div id="stories" class="content">
+    <h3>📖 Stories</h3>
+    <p>Kumpulan cerita manis kita 🥰</p>
+  </div>
 
-    <div id="notes" class="section">
-      <h2>💌 Notes</h2>
-      <p>Pesan manis untukmu 😘</p>
-      <p>"Kamu adalah alasan senyumku setiap hari 💕"</p>
-    </div>
+  <div id="notes" class="content">
+    <h3>💌 Notes</h3>
+    <p>Little notes penuh cinta untukmu 💕</p>
+  </div>
 
-    <div id="extra" class="section">
-      <h2>🎁 Surprise</h2>
-      <p>Yeay! Ini kejutan kecil untukmu 🎉</p>
-      <iframe width="250" height="150" src="https://www.youtube.com/embed/--pHQf2f3ic" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <div id="extra" class="content">
+    <h3>🎁 Extra</h3>
+    <p>Kejutan manis buat kamu 😘</p>
   </div>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
+    const menu = document.getElementById("menu");
+    const items = document.querySelectorAll(".circle-menu div");
+    const contents = document.querySelectorAll(".content");
+
+    items.forEach(item => {
+      item.addEventListener("click", () => {
+        // putar dulu
+        menu.classList.add("rotate");
+
+        // tunggu animasi selesai (1 detik)
+        setTimeout(() => {
+          menu.classList.remove("rotate");
+          const targetId = item.getAttribute("data-target");
+
+          // sembunyikan semua
+          contents.forEach(c => c.classList.remove("active"));
+
+          // tampilkan yang dipilih
+          document.getElementById(targetId).classList.add("active");
+        }, 1000);
+      });
+    });
   </script>
+
 </body>
 </html>
