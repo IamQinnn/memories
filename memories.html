@@ -88,40 +88,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Kucing */
-  .cat {
-    position: fixed;
-    bottom: 20px;
-    left: -150px;
-    width: 120px;
-    z-index: 1000;
-    animation: walk 8s linear forwards;
-  }
-
-  @keyframes walk {
-    0% { left: -150px; }
-    100% { left: 110%; }
-  }
-    #cat {
-  position: absolute;
-  bottom: 50px;
-  height: 120px;
-  display: none;
-  z-index: 1000;
-}
-
-.love {
-  position: absolute;
-  font-size: 24px;
-  animation: floatUp 2s ease-out;
-  z-index: 1001;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-100px); opacity: 0; }
-}
-
 
   /* Love jatuh */
   .love {
@@ -197,39 +163,7 @@
       sound.currentTime = 0;
       sound.play();
     }
-       function showCat() {
-      const cat = document.getElementById("cat");
-      cat.style.display = "block";
-      cat.style.left = "-200px";
-
-      let pos = -200;
-      const interval = setInterval(() => {
-        pos += 3;
-        cat.style.left = pos + "px";
-
-        // tiap 100px kucing ngeluarin love
-        if (pos % 100 === 0) {
-          const love = document.createElement("div");
-          love.innerHTML = "💖";
-          love.className = "love";
-          love.style.left = pos + "px";
-          love.style.top = "50%";
-          document.body.appendChild(love);
-
-          // hapus setelah 2 detik
-          setTimeout(() => love.remove(), 2000);
-        }
-
-        // kalau sudah lewat layar, reset
-        if (pos > window.innerWidth) {
-          clearInterval(interval);
-          cat.style.display = "none";
-        }
-      }, 30);
-    }
-
-    // kucing muncul tiap 15 detik
-    setInterval(showCat, 15000);
+    
   </script>
 </body>
 </html>
