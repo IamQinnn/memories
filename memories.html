@@ -153,15 +153,22 @@
 
     /* Footer */
     footer {
-      background: #ffb6c1;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      position: relative;
-      overflow: hidden;
-    }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffbfd5;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 14px;
+  color: #ff4d6d;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  z-index: 100;
+}
+
 
     footer p {
       margin: 5px;
@@ -213,9 +220,9 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-icons">💖✨</div>
-    <p>Made with Love 💕</p>
-  </footer>
+  💖✨ Made with Love 💕
+</footer>
+
 
   <script>
     function showContent(type) {
