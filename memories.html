@@ -6,165 +6,305 @@
   <title>Our Memories</title>
   <style>
     body {
-      font-family: "Poppins", sans-serif;
       margin: 0;
-      background: #ffe4ec;
-      color: #444;
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background: #ffd6e0;
+      background-image: radial-gradient(#fff 1px, transparent 1px);
+      background-size: 20px 20px;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     h1 {
-      margin: 20px 0;
+      text-align: center;
       color: #e75480;
+      margin-top: 20px;
+      font-size: 28px;
     }
 
-    /* Navbar Bubble */
-    .menu {
+    /* Menu Lingkaran */
+    .circle-menu {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
+      align-items: center;
       flex-wrap: wrap;
-    }
-
-    .menu button {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: none;
-      background: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      font-size: 14px;
-    }
-
-    .menu button:hover {
-      transform: scale(1.1);
-      background: #fff0f5;
-    }
-
-    /* Content Box */
-    .content {
-      display: none;
-      animation: fadeIn 0.5s ease;
-      margin: 20px auto;
+      gap: 20px;
+      margin: 30px auto;
       width: 90%;
-      max-width: 500px;
+      max-width: 400px;
+    }
+
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .circle:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: #ffe5ec;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .circle img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 8px;
+    }
+
+    .circle span {
+      font-size: 14px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    /* Konten */
+    .content {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      min-height: 50vh;
+    }
+
+    .content h2 {
+      color: #e75480;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    /* Grid Card Style */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #ff99c8 #fff0f6;
+    }
+
+    .card-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .card-container::-webkit-scrollbar-thumb {
+      background: #ff99c8;
+      border-radius: 10px;
+    }
+
+    .card {
       background: white;
       border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Gallery Grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
       transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .gallery img:hover {
+    .card:hover {
       transform: scale(1.05);
+      background: #fff0f6;
     }
 
-    /* Notes / Stories Style */
-    .note, .story, .extra {
-      background: #fff8fb;
-      border-left: 4px solid #ff9eb5;
-      padding: 10px;
-      margin: 10px 0;
+    .card img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: cover;
       border-radius: 10px;
-      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      color: #e75480;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* Emoji Floating */
+    .emoji-floating {
+      position: absolute;
+      font-size: 24px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      50% { transform: translateY(-20px) scale(1.2);}
+      100% { transform: translateY(0) scale(1);}
     }
 
     /* Footer */
     footer {
-      margin-top: 30px;
-      padding: 15px;
-      background: #ffccd5;
+      background: #ffb6c1;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
-      font-size: 14px;
-      color: #444;
       position: relative;
+      overflow: hidden;
     }
 
-    footer::after {
-      content: "💖✨🐾";
-      display: block;
-      margin-top: 8px;
-      font-size: 18px;
+    footer p {
+      margin: 5px;
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    footer .footer-icons {
+      font-size: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-5px);}
     }
   </style>
 </head>
 <body>
 
-  <h1>💝 Our Memories 💝</h1>
+  <h1>💖 Our Memories 💖</h1>
 
-  <!-- Menu -->
-  <div class="menu">
-    <button onclick="showContent('gallery')">📷<br>Gallery</button>
-    <button onclick="showContent('stories')">📖<br>Stories</button>
-    <button onclick="showContent('notes')">💌<br>Notes</button>
-    <button onclick="showContent('extra')">🎁<br>Extra</button>
-  </div>
-
-  <!-- Contents -->
-  <div id="gallery" class="content">
-    <h2>📷 Gallery</h2>
-    <p>Tempat foto-foto kenangan kita ✨💕</p>
-    <div class="gallery">
-      <img src="https://placekitten.com/200/200" alt="cat">
-      <img src="https://placekitten.com/201/200" alt="cat">
-      <img src="https://placekitten.com/202/200" alt="cat">
+  <!-- Menu Lingkaran -->
+  <div class="circle-menu">
+    <div class="circle" onclick="showContent('gallery')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1042/1042339.png" alt="">
+      <span>Gallery</span>
+    </div>
+    <div class="circle" onclick="showContent('stories')">
+      <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="">
+      <span>Stories</span>
+    </div>
+    <div class="circle" onclick="showContent('notes')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+      <span>Notes</span>
+    </div>
+    <div class="circle" onclick="showContent('extra')">
+      <img src="https://cdn-icons-png.flaticon.com/512/833/833524.png" alt="">
+      <span>Extra</span>
     </div>
   </div>
 
-  <div id="stories" class="content">
-    <h2>📖 Stories</h2>
-    <div class="story">✨ Cerita pertama kita jalan bareng...</div>
-    <div class="story">💕 Momen spesial saat kita tukar hadiah...</div>
-  </div>
-
-  <div id="notes" class="content">
-    <h2>💌 Notes</h2>
-    <div class="note">Kamu itu alasan aku bahagia setiap hari 🌸</div>
-    <div class="note">Jangan lupa istirahat ya sayang 😘</div>
-  </div>
-
-  <div id="extra" class="content">
-    <h2>🎁 Extra</h2>
-    <div class="extra">🌟 Surprise coming soon! 🌟</div>
+  <!-- Konten Dinamis -->
+  <div class="content" id="content">
+    <h2>✨ Welcome ✨</h2>
+    <p>Pilih salah satu lingkaran di atas untuk melihat kenangan kita 💕</p>
   </div>
 
   <!-- Footer -->
   <footer>
-    Dibuat dengan penuh cinta 💕 untukmu  
-    <br>© 2025 Our Memories
+    <div class="footer-icons">💖✨</div>
+    <p>Made with Love 💕</p>
   </footer>
 
   <script>
-    function showContent(id) {
-      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function showContent(type) {
+      const content = document.getElementById("content");
+      let html = "";
+
+      if (type === "gallery") {
+        html = `
+          <h2>📸 Gallery</h2>
+          <div class="card-container">
+            <div class="card">
+              <img src="https://placekitten.com/200/200" alt="">
+              <h3>Foto 1</h3>
+              <p>Kenangan kita di pantai 🌊</p>
+            </div>
+            <div class="card">
+              <img src="https://placekitten.com/201/200" alt="">
+              <h3>Foto 2</h3>
+              <p>Jalan-jalan sore bareng 🌆</p>
+            </div>
+            <div class="card">
+              <img src="https://placekitten.com/202/200" alt="">
+              <h3>Foto 3</h3>
+              <p>Ketawa bareng sampai lupa waktu 😂</p>
+            </div>
+          </div>
+        `;
+      } else if (type === "stories") {
+        html = `
+          <h2>📖 Stories</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Cerita Pertama</h3>
+              <p>Hari pertama kita ketemu 💕</p>
+            </div>
+            <div class="card">
+              <h3>Cerita Kedua</h3>
+              <p>Waktu kita makan bareng 🍜</p>
+            </div>
+            <div class="card">
+              <h3>Cerita Ketiga</h3>
+              <p>Jalan bareng malem-malem 🌙</p>
+            </div>
+          </div>
+        `;
+      } else if (type === "notes") {
+        html = `
+          <h2>📝 Notes</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Catatan 1</h3>
+              <p>Aku sayang kamu 💌</p>
+            </div>
+            <div class="card">
+              <h3>Catatan 2</h3>
+              <p>Jangan lupa jaga kesehatan ya 🌸</p>
+            </div>
+            <div class="card">
+              <h3>Catatan 3</h3>
+              <p>Semangat selalu, aku selalu dukung kamu ✨</p>
+            </div>
+          </div>
+        `;
+      } else if (type === "extra") {
+        html = `
+          <h2>🎁 Extra</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Surprise</h3>
+              <p>Ini hadiah rahasia buat kamu 🎀</p>
+            </div>
+            <div class="card">
+              <h3>Quotes</h3>
+              <p>"Cinta adalah perjalanan, bukan tujuan" 💖</p>
+            </div>
+          </div>
+        `;
+      }
+
+      content.innerHTML = html;
+
+      // Emoji lucu melayang
+      let emoji = document.createElement("div");
+      emoji.className = "emoji-floating";
+      emoji.style.left = Math.random() * 90 + "vw";
+      emoji.innerHTML = ["💖","💕","🌸","✨","🐱","🎀"][Math.floor(Math.random()*6)];
+      document.body.appendChild(emoji);
+
+      setTimeout(()=> emoji.remove(),4000);
     }
   </script>
 
