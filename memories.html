@@ -6,171 +6,157 @@
   <title>Our Memories</title>
   <style>
     body {
-      font-family: "Poppins", sans-serif;
-      background-color: #ffd6e8;
-      text-align: center;
       margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffd9e6;
+      text-align: center;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background-image: radial-gradient(circle, #ffe6f0 2px, transparent 2px);
+      background-size: 25px 25px;
     }
 
-    h2 {
-      margin-top: 20px;
-      color: #ff4d88;
-      font-size: 26px;
+    .header {
+      background: linear-gradient(135deg, #fff, #ffe6f0);
+      padding: 40px 20px 80px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      position: relative;
     }
 
-    /* lingkaran menu */
-    .circle-menu {
-      width: 180px;
-      height: 180px;
+    .header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 32px;
+      background: linear-gradient(90deg, #ff4d88, #ff99cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    /* Lingkaran Navbar */
+    .circle-nav {
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      margin: 20px auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 1s ease-in-out, box-shadow 0.3s ease;
-    }
-
-    .circle-menu:hover {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    .circle-menu.rotate {
-      transform: rotate(360deg);
-    }
-
-    .circle-menu div {
+      background: conic-gradient(
+        #ffc0cb 0% 25%, 
+        #d8b4fe 25% 50%, 
+        #a7f3d0 50% 75%, 
+        #fcd34d 75% 100%
+      );
+      position: absolute;
+      bottom: -110px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    .circle-nav a {
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #444;
       font-size: 13px;
       font-weight: bold;
-      cursor: pointer;
-      color: white;
-      padding: 6px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+      line-height: 1.2;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
 
-    .circle-menu div span {
+    .circle-nav a:hover {
+      transform: scale(1.2) rotate(5deg);
+      background: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .gallery { top: 15px; left: 50%; transform: translateX(-50%); }
+    .stories { right: 15px; top: 50%; transform: translateY(-50%); }
+    .notes { bottom: 15px; left: 50%; transform: translateX(-50%); }
+    .extra { left: 15px; top: 50%; transform: translateY(-50%); }
+
+    /* Konten Section */
+    section {
+      padding: 150px 20px 60px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #e75480;
+    }
+
+    section p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    /* Emoji dekorasi */
+    .deco {
       font-size: 22px;
-      margin-bottom: 4px;
+      animation: bounce 2s infinite;
     }
 
-    .circle-menu div:hover {
-      transform: scale(1.1);
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.4);
-    }
-
-    .gallery { background: #ff7f7f; }
-    .stories { background: #ffb84d; }
-    .notes { background: #85e085; }
-    .extra { background: #809fff; }
-
-    /* pemisah */
-    .divider {
-      margin: 15px auto;
-      width: 70%;
-      height: 2px;
-      background: linear-gradient(to right, #ff4d88, #ffb84d, #85e085, #809fff);
-      border-radius: 5px;
-    }
-
-    /* konten */
-    .content {
-      display: none;
-      padding: 15px;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .content.active {
-      display: block;
-      opacity: 1;
-      transform: scale(1);
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
   </style>
 </head>
 <body>
 
-  <h2>💕 Our Memories 💕</h2>
-
-  <!-- Lingkaran navbar -->
-  <div class="circle-menu" id="menu">
-    <div class="gallery" data-target="gallery">
-      <span>📸</span>
-      Gallery
-    </div>
-    <div class="stories" data-target="stories">
-      <span>📖</span>
-      Stories
-    </div>
-    <div class="notes" data-target="notes">
-      <span>💌</span>
-      Notes
-    </div>
-    <div class="extra" data-target="extra">
-      <span>🎁</span>
-      Extra
+  <div class="header">
+    <h1>Our Memories 💕</h1>
+    <div class="circle-nav">
+      <a href="#gallery" class="gallery">📷<br>Gallery</a>
+      <a href="#stories" class="stories">📖<br>Stories</a>
+      <a href="#notes" class="notes">💌<br>Notes</a>
+      <a href="#extra" class="extra">🎁<br>Extra</a>
     </div>
   </div>
 
-  <!-- Pemisah -->
-  <div class="divider"></div>
+  <section id="gallery">
+    <h2>📸 Gallery <span class="deco">🌸</span></h2>
+    <p>Tempat menyimpan foto-foto kenangan kita ✨💕</p>
+  </section>
 
-  <!-- Konten -->
-  <div id="gallery" class="content active">
-    <h3>📸 Gallery</h3>
-    <p>Tempat untuk menyimpan foto-foto kenangan kita 💖</p>
-  </div>
+  <section id="stories">
+    <h2>📖 Stories <span class="deco">🕊️</span></h2>
+    <p>Kumpulan cerita manis yang pernah kita lewati bersama 💖</p>
+  </section>
 
-  <div id="stories" class="content">
-    <h3>📖 Stories</h3>
-    <p>Kumpulan cerita manis kita 🥰</p>
-  </div>
+  <section id="notes">
+    <h2>💌 Notes <span class="deco">🎀</span></h2>
+    <p>Catatan kecil penuh cinta, hanya untukmu 🥰</p>
+  </section>
 
-  <div id="notes" class="content">
-    <h3>💌 Notes</h3>
-    <p>Little notes penuh cinta untukmu 💕</p>
-  </div>
-
-  <div id="extra" class="content">
-    <h3>🎁 Extra</h3>
-    <p>Kejutan manis buat kamu 😘</p>
-  </div>
-
-  <script>
-    const menu = document.getElementById("menu");
-    const items = document.querySelectorAll(".circle-menu div");
-    const contents = document.querySelectorAll(".content");
-
-    items.forEach(item => {
-      item.addEventListener("click", () => {
-        // putar lingkaran
-        menu.classList.add("rotate");
-
-        // tunggu animasi selesai
-        setTimeout(() => {
-          menu.classList.remove("rotate");
-          const targetId = item.getAttribute("data-target");
-
-          // sembunyikan semua konten dengan efek smooth
-          contents.forEach(c => {
-            c.classList.remove("active");
-          });
-
-          // tampilkan konten terpilih
-          const targetContent = document.getElementById(targetId);
-          targetContent.classList.add("active");
-        }, 800);
-      });
-    });
-  </script>
+  <section id="extra">
+    <h2>🎁 Extra <span class="deco">✨</span></h2>
+    <p>Hal-hal spesial tambahan untukmu 💝</p>
+  </section>
 
 </body>
 </html>
